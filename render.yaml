@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: examalert-ai
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./examalert.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONITOR_INTERVAL_MINUTES
+        value: "60"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
